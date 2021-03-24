@@ -15,6 +15,16 @@ const EditMovieForm = (props) => {
 		description: ""
 	});
 	
+	useEffect(() => {
+		axios.get(`http://localhost:5000/api/movies/${id}`)
+			.then(resp => {
+				setMovie(resp.data)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}, [])
+
 	const handleChange = (e) => {
         setMovie({
             ...movie,
@@ -24,10 +34,18 @@ const EditMovieForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+		.then(resp => {
+			props.setMovies(resp.data)
+			push(`/movies/${id}`)
+		})
+		.catch(err => {
+			console.log(err.response)
+		})
 	}
 	
 	const { title, director, genre, metascore, description } = movie;
-
+	const { id } = useParams();
     return (
 	<div className="col">
 		<div className="modal-content">
