@@ -5,7 +5,7 @@ import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
 import MovieHeader from './components/MovieHeader';
-
+import AddMovieForm from './components/AddMovieForm'
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
@@ -53,13 +53,18 @@ const App = (props) => {
               <Movie deleteMovie={deleteMovie}/>
             </Route>
 
-            <Route path="/movies">
+            <Route exact path="/movies">
               <MovieList movies={movies}/>
             </Route>
 
-            <Route path="/">
+            <Route exact path="/">
               <Redirect to="/movies"/>
             </Route>
+
+            <Route exact path="/movies/add">
+              <AddMovieForm />
+            </Route>
+
           </Switch>
         </div>
       </div>
