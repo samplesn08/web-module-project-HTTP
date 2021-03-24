@@ -32,7 +32,7 @@ const App = (props) => {
   const addToFavorites = (movie) => {
     
   }
-
+  const { id } = useParams();
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
@@ -46,6 +46,7 @@ const App = (props) => {
         
           <Switch>
             <Route path="/movies/edit/:id">
+              <EditMovieForm id={id}/>
             </Route>
 
             <Route path="/movies/:id">
