@@ -16,7 +16,7 @@ const AddMovieForm = (props) => {
 	});
 
 	const handleChange = (e) => {
-        setMovie({
+        setNewMovie({
             ...newMovie,
             [e.target.name]: e.target.value
         });
